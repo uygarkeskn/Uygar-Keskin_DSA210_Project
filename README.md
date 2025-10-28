@@ -1,45 +1,52 @@
-# Project Proposal: Temporal Correlation Between Food Purchases and YouTube Activity
+# YouTube Watching & Food Purchasing Correlation Analysis
 
-## Project Idea
+## Project Proposal
 
-The main goal of this project is to investigate whether there is a meaningful temporal relationship between my **food purchasing times** (from both **Yemeksepeti** and **vending machine transactions**) and my **YouTube watching activity**.
+### Project Idea
+The goal of this project is to explore whether there is a meaningful temporal relationship between my **food purchasing times** (from both *Yemeksepeti* and vending machine transactions) and my **YouTube watching activity**.
 
-I often notice that I tend to watch YouTube videos while eating or shortly after buying food. This observation led me to wonder if there is a measurable correlation between these two behaviors.
+I often notice that I tend to watch YouTube videos while eating or shortly after buying food. This project aims to test that observation using data analysis.
 
-The project will analyze my personal behavioral data to answer the following question:
+The main research question is:
+> “Do my food purchasing times align with my YouTube watching times?”
 
-> **“Do my food purchasing times align with my YouTube watching times?”**
-
-By examining these activities as time series, I aim to uncover daily or weekly patterns that might connect eating and media consumption habits.
-
----
-
-## Data to Be Used
-
-- **Yemeksepeti order timestamps:**  
-  Historical data from my Yemeksepeti account showing when I placed food delivery orders.
-
-- **Vending machine purchase timestamps:**  
-  Transaction records from campus or public vending machines, including only the purchase times.
-
-- **YouTube watch history:**  
-  Timestamps of my video-watching activity, obtained through Google Takeout.
-
-> No personal identifiers, food types, prices, or video titles will be included — only **timestamp information** will be analyzed to focus purely on temporal patterns.
+By examining these activities as time series, I hope to identify daily or weekly patterns that link food consumption and media engagement.
 
 ---
 
-## Data Collection Plan
+### Data to Be Used
+- **Yemeksepeti Order Timestamps:**
+  Historical order data showing when I placed food delivery orders.
+- **Vending Machine Purchase Timestamps:**
+  Transaction logs from campus or public vending machines (time only).
+- **YouTube Watch History:**
+  Timestamps of videos watched, obtained from **Google Takeout**.
 
-### Yemeksepeti Data
-I will manually collect or export my order history, focusing only on order timestamps.
+Only **timestamps** will be used — no personal details, food types, prices, or video content.
+The goal is to analyze **temporal overlap patterns**, not consumption details.
 
-### Vending Machine Data
-I will access my vending machine purchase history through campus card or transaction records and extract the exact purchase times.
+---
 
-### YouTube Data
-I will download my YouTube watch history via **Google Takeout**, which includes the precise time each video was viewed.
+### Data Collection Plan
+1. **Yemeksepeti Data**
+   Export or manually record order timestamps from my account.
+2. **Vending Machine Data**
+   Retrieve transaction times from campus card or payment logs.
+3. **YouTube Data**
+   Download my watch history via **Google Takeout** (includes view timestamps).
+4. **Integration & Cleaning**
+   - Convert all timestamps to the same format and timezone.
+   - Merge them into a single dataset.
+   - Conduct time-series correlation analysis to detect overlaps and patterns.
 
-### Data Integration
-After collecting all three datasets, I will clean and standardize the timestamps (e.g., converting to a unified format and local time zone).  
-Then, I will merge them into a single dataset to perform **time-series correlation analysis**.
+---
+
+### Expected Outcome
+I expect to find observable correlations between food-related activities and YouTube viewing behavior. Possible outcomes include:
+- Temporal overlaps, such as increased YouTube watching during or shortly after food purchases.
+- Daily rhythm patterns, where peaks in both activities occur around lunch or dinner times.
+- Identification of habitual cycles, reflecting consistent behavioral links between eating and entertainment.
+
+Even if no significant correlation is discovered, the analysis will still provide valuable insights into personal behavioral rhythms and how digital activity relates to daily routines.
+
+---
