@@ -1,59 +1,57 @@
-# YouTube Watching & Food Purchasing Correlation Analysis
+Project Proposal: Behavioral Coupling of Food & Media Consumption
 
-## Project Proposal
+Project Overview
 
-### Project Idea
-The main objective of this project is to analyze the relationship between my **eating times** and **YouTube watching activity** over the **past year**.
-Instead of focusing on what I eat or what I watch, the goal is to explore **when** these two activities occur and whether they overlap in time.
+This project applies data science methodologies to analyze the "Quantified Self," specifically investigating the behavioral coupling between food ordering (physical consumption) and media streaming (digital consumption).
 
-I aim to investigate whether I tend to watch YouTube videos while eating, or shortly before or after meals. By examining these behaviors as **time-based events**, the project seeks to uncover recurring temporal patterns that connect food consumption and media engagement.
+Instead of merely observing if these events overlap, this project aims to determine if food delivery acts as a statistically significant trigger event for high-engagement media sessions. The goal is to quantify the "Dinner-and-a-Show" phenomenon—measuring how predictable and intense this habit is.
 
-The key research question is:
-> “Do my eating times align with my YouTube watching times during the past year?”
+Research Questions & Analytical Focus
 
-Through this analysis, I hope to identify daily or weekly cycles that reveal consistent behavioral relationships between eating habits and digital entertainment.
+Based on feedback regarding analytical depth, this analysis focuses on two specific dimensions of behavior:
 
----
+Habit Consistency (Probability):
 
-### Data to Be Used
-- **Card Transaction Data (Yemeksepeti, Just Eat & Vending Machines):**
-  I will extract timestamps of my food-related purchases from my **personal card transaction history** over the last 12 months.
-  This includes **online orders from Yemeksepeti and Just Eat**, as well as **physical purchases from vending machines**.
-- **YouTube Watch History:**
-  My personal YouTube viewing history obtained from **Google Takeout**, which contains the exact timestamps of videos watched within the same time period.
+Question: How reliably does ordering food lead to watching a video?
 
-Only **timestamp data** will be used — no food details, restaurant names, prices, or video titles.
-The focus will be purely on identifying **time-based correlations** between eating and watching patterns across the past year.
+Metric: The conditional probability $P(\text{Watch} | \text{Order})$. A high probability indicates a deeply ingrained behavioral loop, while a low one suggests randomness.
 
----
+Behavioral Latency (The "Eating Window"):
 
-### Data Collection Plan
-1. **Card Transaction Data**
-   - Retrieve my transaction records from my personal bank or card provider.
-   - Filter for food-related purchases (Yemeksepeti, Just Eat, vending machines).
-   - Extract only timestamps representing when food was purchased or ordered.
+Question: What is the precise time lag between the transaction (ordering) and the start of consumption (watching)?
 
-2. **YouTube Data**
-   - Export my full YouTube watch history via **Google Takeout**.
-   - Keep only timestamps of video views within the same 12-month period.
+Metric: We define a dynamic "Eating Window" (Order Time + 30 mins lag) to isolate the consumption phase from the waiting phase.
 
-3. **Integration and Cleaning**
-   - Convert all timestamps to a unified format and local timezone (UTC+3).
-   - Remove duplicates or incomplete entries.
-   - Merge the datasets chronologically to compare time overlaps between eating and watching activities.
-   - Resample data into hourly or daily intervals for trend visualization.
+Data Sources
 
-4. **Exploratory and Statistical Analysis**
-   - Visualize daily and weekly distributions of eating and watching events.
-   - Compute **Pearson or Spearman correlation coefficients** to measure temporal alignment.
-   - Use **cross-correlation** to detect time lags (e.g., watching videos 15–30 minutes after eating).
-   - Compare weekday and weekend behaviors to observe differences in routine patterns.
+The project utilizes two personal datasets representing activity from the past 12 months:
 
----
+Transaction Data (Yemeksepeti/Just Eat/Vending): Extracted from personal archives. Contains timestamps and location metadata (Turkey/Netherlands) for food orders.
 
-### Expected Outcome
-I expect to identify noticeable **temporal correlations** between eating and YouTube watching behaviors over the past year. Possible results include:
-- Overlaps between eating and video-watching periods.
+YouTube Watch History: Extracted via Google Takeout. Contains ISO 8601 timestamps for every video watched.
 
-Even if no strong statistical correlation is found, the analysis will still provide **valuable behavioral insights** — showing how media consumption fits into everyday life patterns.
-Ultimately, this project demonstrates how **personal digital and financial data** can be combined to perform meaningful **data-driven self-analysis** using data science tools.
+Methodology
+
+1. Data Processing & Synchronization
+
+Timezone Alignment: Since the dataset covers transactions in different time zones (Turkey UTC+3 vs. Netherlands UTC+1), timestamps are normalized to UTC to ensure accurate lag calculation.
+
+Session Parsing: YouTube data is parsed using Regex to identify distinct viewing events.
+
+2. Statistical Analysis
+
+We perform the following tests to validate the "Food as a Trigger" hypothesis:
+
+Paired T-Test: To compare video volume in the "Eating Window" (post-delivery) vs. a "Baseline Window" (pre-order).
+
+Pearson Correlation: To test for habit continuity (does pre-meal watching predict during-meal watching?).
+
+Expected Outcomes
+
+I expect to move beyond "I watch videos when I eat" to specific behavioral insights, such as:
+
+"I have a 60% probability of starting a video within 30 minutes of food delivery."
+
+"My video consumption volume significantly increases during the eating window compared to the baseline."
+
+This project ultimately demonstrates how personal transactional and behavioral data can be combined to model daily habit loops.
